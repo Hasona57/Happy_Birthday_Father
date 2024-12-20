@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد!</title>
+    <link rel="icon" href="https://th.bing.com/th/id/R.e6159647f31425e2d226e88282eec2d9?rik=A%2fKSM5DmsaQacA&pid=ImgRaw&r=0" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffcc99, #ff99cc);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 90%;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://th.bing.com/th/id/R.e6159647f31425e2d226e88282eec2d9?rik=A%2fKSM5DmsaQacA&pid=ImgRaw&r=0') no-repeat center;
+            background-size: 120%;
+            animation: openGift 3s forwards;
+            z-index: 1;
+        }
+
+        .message {
+            position: relative;
+            z-index: 2;
+            display: none;
+            color: #444;
+        }
+
+        .message h1 {
+            font-size: 2em;
+            color: #ff6699;
+            margin-bottom: 10px;
+        }
+
+        .message p {
+            font-size: 1.2em;
+            color: #333333;
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1em;
+            color: #777;
+        }
+
+        .fireworks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .fireworks span {
+            position: absolute;
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: #ffcc00;
+            border-radius: 50%;
+            animation: firework 1.5s ease-out infinite;
+        }
+
+        .additional-message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #ff6699;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #ff3366;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes openGift {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .message h1 {
+                font-size: 1.5em;
+            }
+
+            .message p {
+                font-size: 1em;
+            }
+
+            .quote {
+                font-size: 0.9em;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .message h1 {
+                font-size: 1.2em;
+            }
+
+            .message p {
+                font-size: 0.9em;
+            }
+
+            .quote {
+                font-size: 0.8em;
+            }
+
+            .card {
+                padding: 10px;
+            }
+
+            .button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fireworks" id="fireworks">
+            <span style="top: 30%; left: 40%;"></span>
+            <span style="top: 50%; left: 60%;"></span>
+            <span style="top: 70%; left: 50%;"></span>
+        </div>
+        <div class="card">
+            <div class="gift" id="gift"></div>
+            <div class="message" id="message">
+                <h1>عيد ميلاد سعيد يا أبي!</h1>
+                <p>أتمنى لك يوماً مليئاً بالحب والفرح والسعادة. أنت أفضل أب يمكن أن يتمناه أي شخص!</p>
+                <div class="quote">"العائلة هي الهدية الأجمل في الحياة، وأنت أعظم هدية لنا."</div>
+                <div class="additional-message">
+                    <p>أتمنى أن تكون جميع أيامك مليئة بالنجاحات واللحظات الجميلة. نحن فخورون بك دائماً!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation to reveal the message
+        document.addEventListener('DOMContentLoaded', () => {
+            const gift = document.getElementById('gift');
+            const message = document.getElementById('message');
+            const fireworks = document.getElementById('fireworks');
+
+            setTimeout(() => {
+                gift.style.display = 'none';
+                message.style.display = 'block';
+                fireworks.style.display = 'block';
+                generateFireworks();
+            }, 3000); // Wait for 3 seconds before showing the message
+        });
+
+        function generateFireworks() {
+            const fireworks = document.getElementById('fireworks');
+            for (let i = 0; i < 20; i++) {
+                const firework = document.createElement('span');
+                const x = Math.random() * 100 + '%';
+                const y = Math.random() * 100 + '%';
+                firework.style.left = x;
+                firework.style.top = y;
+                fireworks.appendChild(firework);
+                setTimeout(() => firework.remove(), 1500);
+            }
+        }
+    </script>
+</body>
+</html>
